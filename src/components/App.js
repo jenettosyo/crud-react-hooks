@@ -1,8 +1,20 @@
-import React from "react";
-import "../styles/App.scss";
+import React, { useReducer } from "react";
+import AppContexts from "../contexts/index";
+import Header from "./Header";
+import Form from "./Form";
+import reducer from "../reducers/index";
 
 function App() {
-  return <div className="App"></div>;
+  const [state, dispatch] = useReducer(reducer, []);
+
+  return (
+    <>
+      <AppContexts.Provider value={{ state, dispatch }}>
+        <Header />
+        <Form />
+      </AppContexts.Provider>
+    </>
+  );
 }
 
 export default App;

@@ -5,7 +5,7 @@ import AppContexts from "../contexts";
 const Form = () => {
   const [todo, setTodo] = useState("");
 
-  const { dispatch, state } = useContext(AppContexts);
+  const { dispatch } = useContext(AppContexts);
 
   const addSubmit = (e) => {
     e.preventDefault();
@@ -14,7 +14,6 @@ const Form = () => {
       todo,
     });
   };
-  // console.log(state);
 
   return (
     <div>
@@ -29,9 +28,6 @@ const Form = () => {
           ADD
         </button>
       </form>
-      {/* {
-        state.map()
-      } */}
     </div>
   );
 };

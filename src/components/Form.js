@@ -15,6 +15,8 @@ const Form = () => {
     });
   };
 
+  const Uncreable = todo === "";
+
   return (
     <div>
       <form className="form-container" onSubmit={addSubmit}>
@@ -26,7 +28,9 @@ const Form = () => {
           value={todo}
           name="todo"
         />
-        <button className="add-btn">ADD</button>
+        <button className="add-btn" disabled={Uncreable}>
+          ADD
+        </button>
       </form>
       <div className="todo-container">
         {state.map((list, index) => (

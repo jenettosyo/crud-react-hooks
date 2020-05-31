@@ -7,6 +7,8 @@ import reducer from "../reducers/index";
 function App() {
   const [state, dispatch] = useReducer(reducer, []);
 
+  console.log({ state });
+
   return (
     <>
       <AppContexts.Provider value={{ state, dispatch }}>

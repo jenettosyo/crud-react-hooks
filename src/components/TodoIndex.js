@@ -31,6 +31,7 @@ const TodoIndex = (props) => {
       type: DELETE_TODO,
       id,
     });
+    setModalOpen(false);
   };
 
   return (

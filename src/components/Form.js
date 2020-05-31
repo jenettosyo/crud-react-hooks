@@ -13,7 +13,10 @@ const Form = () => {
       type: ADD_TODO,
       todo,
     });
+    setTodo("");
   };
+
+  const Uncreable = todo === "";
 
   return (
     <div>
@@ -26,7 +29,9 @@ const Form = () => {
           value={todo}
           name="todo"
         />
-        <button className="add-btn">ADD</button>
+        <button className="add-btn" disabled={Uncreable}>
+          ADD
+        </button>
       </form>
       <div className="todo-container">
         {state.map((list, index) => (

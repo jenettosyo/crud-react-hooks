@@ -12,16 +12,20 @@ const todos = (state = [], action) => {
       const map = state.map((list) => {
         const check = () => {
           if (action.id === list.id) {
-            const replace = list.todo.replace(list.todo, action.currentTodo);
             Object.defineProperty(list, "todo", {
               writable: true,
             });
-            list.todo = replace;
+            list.todo = action.currentTodo;
           }
         };
         return check();
       });
       return [...state];
+
+    case DELETE_TODO:
+      return state.filter((list) => {
+        return action.id !== list.id;
+      });
 
     default:
       return state;

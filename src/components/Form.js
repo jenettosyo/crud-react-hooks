@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react";
 import { ADD_TODO } from "../actions/index";
-import AppContexts from "../contexts";
+import AppContexts from "../contexts/index";
+import TodoIndex from "./TodoIndex";
 
 const Form = () => {
+  const { dispatch, state } = useContext(AppContexts);
   const [todo, setTodo] = useState("");
-
-  const { dispatch } = useContext(AppContexts);
 
   const addSubmit = (e) => {
     e.preventDefault();
@@ -17,17 +17,22 @@ const Form = () => {
 
   return (
     <div>
-      <form className="form-container">
+      <form className="form-container" onSubmit={addSubmit}>
         <input
           type="text"
           className="input-field"
           placeholder="Your todo"
           onChange={(e) => setTodo(e.target.value)}
+          value={todo}
+          name="todo"
         />
-        <button className="add-btn" onClick={addSubmit}>
-          ADD
-        </button>
+        <button className="add-btn">ADD</button>
       </form>
+      <div className="todo-container">
+        {state.map((list, index) => (
+          <TodoIndex list={list} key={index} todo={todo} />
+        ))}
+      </div>
     </div>
   );
 };

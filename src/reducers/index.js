@@ -1,4 +1,4 @@
-import { ADD_TODO } from "../actions/index";
+import { ADD_TODO, EDIT_TODO, DELETE_TODO } from "../actions/index";
 
 const todos = (state = [], action) => {
   switch (action.type) {
@@ -7,6 +7,21 @@ const todos = (state = [], action) => {
       const length = state.length;
       const id = length === 0 ? 1 : state[length - 1].id + 1;
       return [...state, { id, ...event }];
+
+    case EDIT_TODO:
+      const map = state.map((list) => {
+        const check = () => {
+          if (action.id === list.id) {
+            const replace = list.todo.replace(list.todo, action.currentTodo);
+            Object.defineProperty(list, "todo", {
+              writable: true,
+            });
+            list.todo = replace;
+          }
+        };
+        return check();
+      });
+      return [...state];
 
     default:
       return state;

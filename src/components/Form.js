@@ -1,6 +1,8 @@
 import React, { useState, useContext } from "react";
 import { ADD_TODO } from "../actions/index";
 import AppContexts from "../contexts/index";
+
+//components
 import TodoIndex from "./TodoIndex";
 
 const Form = () => {

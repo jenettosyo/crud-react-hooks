@@ -25,6 +25,14 @@ const TodoIndex = (props) => {
     setModalOpen2(false);
   };
 
+  const Deletehandle = (e) => {
+    e.preventDefault();
+    dispatch({
+      type: DELETE_TODO,
+      id,
+    });
+  };
+
   return (
     <div>
       <div className="todo-box">
@@ -51,7 +59,9 @@ const TodoIndex = (props) => {
           />
           <div className="delete-title">DELETE</div>
           <div className="delete-text">{props.list.todo}</div>
-          <button className="delete-checkbtn">DELETE</button>
+          <button className="delete-checkbtn" onClick={Deletehandle}>
+            DELETE
+          </button>
         </div>
       </ReactModal>
       <ReactModal

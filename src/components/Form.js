@@ -13,6 +13,7 @@ const Form = () => {
       type: ADD_TODO,
       todo,
     });
+    setTodo("");
   };
 
   const Uncreable = todo === "";
